@@ -1,0 +1,36 @@
+{
+    "name": "zsotyooo/jira-git-release-tool",
+    "version": "1.0.0",
+    "type": "library",
+    "description": "A tiny php command line tool to help developers in release planning",
+    "keywords": ["jira","git","release"],
+    "homepage": "https://github.com/zsotyooo/jira-git-release-tool",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zsolt Molnár",
+            "email": "zsotyooo@gmail.com",
+            "homepage": "https://github.com/zsotyooo",
+            "role": "Developer, TTL"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "symfony/console": "^2.7",
+        "symfony/config": "^2.7",
+        "symfony/yaml": "^2.7",
+        "symfony/dependency-injection": "^2.7",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "bin": [
+        "bin/jgrt"
+    ],
+    "autoload": {
+        "psr-0": {
+            "Zsotyooo": "src"
+        }
+    }
+}

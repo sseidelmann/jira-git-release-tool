@@ -1,0 +1,16 @@
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Zsotyooo\JiraGitReleaseTool\Console\Application;
+use Zsotyooo\JiraGitReleaseTool\Console\Command\ListCommand as ListCommand;
+use Zsotyooo\JiraGitReleaseTool\Console\Command\ConfigDumpCommand as ConfigDumpCommand;
+
+$app = new Application('JIRA GIT RELEASE COMMAND LINE TOOL', '1.0.0');
+$app->add(new ListCommand());
+$app->add(new ConfigDumpCommand());
+
+$app->run();

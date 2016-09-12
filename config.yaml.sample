@@ -1,0 +1,10 @@
+jira:
+  basic_auth:   YOUR_BASE64_ENCODED_USERNAME_AND_PASSWORD
+  base_url: https://COMPANY.atlassian.net
+  ticket_fetch_url:  /rest/api/2/issue/%s
+  projects: PROJECTKEY1,PROJECTKEY2
+git:
+  project_folder: /PATH/TO/PROJECT/FOLDER
+  test_branch: origin/develop
+  master_branch: origin/master
+  release_branch_prefix: origin/release/
