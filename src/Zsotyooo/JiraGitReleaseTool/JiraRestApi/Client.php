@@ -1,6 +1,6 @@
 <?php
 
-namespace Zsotyooo\JiraGitReleaseTool\Api\Jira;
+namespace Zsotyooo\JiraGitReleaseTool\JiraRestApi;
 
 use GuzzleHttp\Client as GuzzleClient;
 

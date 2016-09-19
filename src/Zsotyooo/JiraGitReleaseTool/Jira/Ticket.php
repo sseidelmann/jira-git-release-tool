@@ -3,7 +3,7 @@
 namespace Zsotyooo\JiraGitReleaseTool\Jira;
 
 use Zsotyooo\JiraGitReleaseTool\Config\Config as AppConfig;
-use Zsotyooo\JiraGitReleaseTool\Api\Jira\TicketFetcher as JiraTicketFetcher;
+use Zsotyooo\JiraGitReleaseTool\Jira\Api\TicketFetcher as JiraTicketFetcher;
 
 /**
  * Ticket entity
@@ -16,10 +16,10 @@ class Ticket
 
     private $config;
     
-    public function __construct($ticket, $config)
+    public function __construct($ticket, $config, $ticketFetcher)
     {
         $this->config = $config;
-        $this->ticketFetcher = new JiraTicketFetcher($this->config);
+        $this->ticketFetcher = $ticketFetcher;
         $this->load($ticket);
     }
 
@@ -31,7 +31,7 @@ class Ticket
      */
     public function load($ticket)
     {
-        $this->data = $this->ticketFetcher->getTicket($ticket);
+        $this->data = $this->ticketFetcher->getData($ticket);
         return $this;
     }
 

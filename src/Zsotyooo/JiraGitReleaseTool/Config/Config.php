@@ -2,12 +2,19 @@
 namespace Zsotyooo\JiraGitReleaseTool\Config;
 
 use Zsotyooo\JiraGitReleaseTool\Config\Loader as ConfigLoader;
+use Zsotyooo\JiraGitReleaseTool\App\DataProvider as DataProviderInterface;
 
 /**
  * Config
  */
 class Config
+    implements DataProviderInterface
 {
+    /**
+     * default dta
+     * 
+     * @var array
+     */
     private $defaultData = [
         'jira' => [
             'basic_auth' => '',
@@ -19,18 +26,26 @@ class Config
             'project_folder' => '~',
             'test_branch' => 'origin/develop',
             'master_branch' => 'origin/master',
-            'release_branch_prefix' => 'origin/release/'
+            'release_branch_prefix' => 'release/'
         ]
-
     ];
+
+    /**
+     * config loader
+     * 
+     * @var ConfigLoader
+     */
+    private $loader;
 
     private $data = [];
 
-    public function __construct()
+    public function __construct(
+        $loader
+    )
     {
-        $loader = new ConfigLoader();
+        $this->loader = $loader;
 
-        $data = $loader->config();
+        $data = $loader->data();
 
         $this->merge($data);
     }
@@ -52,7 +67,7 @@ class Config
      * 
      * @return array
      */
-    public function configData()
+    public function data()
     {
         return $this->data;
     }
@@ -66,7 +81,7 @@ class Config
      */
     public function get($namespace, $key)
     {
-        $data = $this->configData();
+        $data = $this->data();
         return $data[$namespace][$key];
     }
 }

@@ -4,20 +4,27 @@ namespace Zsotyooo\JiraGitReleaseTool\Config;
 
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Config\FileLocator;
+use Zsotyooo\JiraGitReleaseTool\App\DataProvider as DataProviderInterface;
 
 /**
  * Load config file
  */
 class Loader
+    implements DataProviderInterface
 {
     const CONFIG_PATH = '../../../../config.yaml';
 
-    private $config;
+    /**
+     * config values
+     * 
+     * @var array
+     */
+    private $data;
 
     public function __construct()
     {
         $configFileLocator = new FileLocator();
-        $this->config = Yaml::parse(
+        $this->data = Yaml::parse(
                 $configFileLocator->locate($this->configFilePath())
             );
     }
@@ -33,12 +40,12 @@ class Loader
     }
 
     /**
-     * get config object
+     * get config array
      * 
-     * @return Zsotyooo\JiraGitReleaseTool\Config\Config
+     * @return array
      */
-    public function config()
+    public function data()
     {
-        return $this->config;
+        return $this->data;
     }
 }

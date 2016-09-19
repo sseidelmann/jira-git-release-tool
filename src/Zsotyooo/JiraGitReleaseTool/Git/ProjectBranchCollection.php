@@ -9,6 +9,8 @@ use Zsotyooo\JiraGitReleaseTool\Config\Config as AppConfig;
  */
 class ProjectBranchCollection extends BranchCollectionAbstract
 {
+    protected $location = 'r';
+    
     /**
      * filters the branches for configured projects
      * 

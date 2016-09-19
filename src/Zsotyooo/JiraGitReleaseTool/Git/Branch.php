@@ -32,7 +32,8 @@ class Branch
         if (is_null($this->data)) {
             $this->data = new BranchData([
                     'name' => $this->name,
-                    'ticket' => $this->_getTicket()
+                    'ticket' => $this->_getTicket(),
+                    'sha' => ''
                 ]);
         }
         return $this->data;

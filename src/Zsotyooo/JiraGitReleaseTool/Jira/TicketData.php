@@ -16,8 +16,8 @@ class TicketData
     public function __construct($data)
     {
         $this->key = $data['key'];
-        $this->summary = $data['fields']['summary'];
-        $this->status = $data['fields']['status']['name'];
+        $this->summary = $data['summary'];
+        $this->status = $data['status'];
     }
 
     /**
