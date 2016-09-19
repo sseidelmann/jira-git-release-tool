@@ -18,6 +18,7 @@ class BranchData
     {
         $this->name = trim($data['name']);
         $this->ticket = trim($data['ticket']);
+        $this->sha = trim($data['sha']);
     }
 
     /**

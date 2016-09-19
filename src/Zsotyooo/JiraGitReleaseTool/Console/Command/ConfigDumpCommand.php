@@ -2,16 +2,14 @@
 
 namespace Zsotyooo\JiraGitReleaseTool\Console\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Zsotyooo\JiraGitReleaseTool\Config\Config as AppConfig;
-
 /**
  * See what is in the config
  */
-class ConfigDumpCommand extends Command
+class ConfigDumpCommand extends AbstractCommand
 {
+    protected $name = "Config Show";
+
+    
     protected function configure()
     {
         $this
@@ -19,11 +17,5 @@ class ConfigDumpCommand extends Command
             ->setDescription('show config values')
             ->setHelp('Show config values')
         ;
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $config = new AppConfig();
-        var_dump($config->configData());
     }
 }

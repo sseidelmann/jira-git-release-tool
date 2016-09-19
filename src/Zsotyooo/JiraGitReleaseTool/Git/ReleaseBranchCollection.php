@@ -6,6 +6,8 @@ use Zsotyooo\JiraGitReleaseTool\Config\Config as AppConfig;
 
 class ReleaseBranchCollection extends BranchCollectionAbstract
 {
+    protected $location = 'l';
+
     /**
      * filters the collenction to release branches
      * 
@@ -19,7 +21,7 @@ class ReleaseBranchCollection extends BranchCollectionAbstract
             $this->branches,
             function($val) use (&$prefix)
             {
-                return (strpos($val, $prefix) === 0);
+                return (strpos($val, $prefix) !== false);
             }
         );
 

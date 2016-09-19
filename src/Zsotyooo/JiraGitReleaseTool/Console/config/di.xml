@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!-- Command dump: -->
+        <service id="app.console.command.configdump" class="Zsotyooo\JiraGitReleaseTool\Console\Command\ConfigDumpCommand">
+            <argument type="service" id="app.config.config" />
+            <argument type="service" id="app.console.view.configdump" />
+            <argument type="service" id="app.configdump.controller" />
+        </service>
+
+        <service id="app.console.view.configdump" class="Zsotyooo\JiraGitReleaseTool\Console\View\ConfigDumpView">
+            <argument type="service" id="app.config.config" />
+        </service>
+
+        <!-- Feature list -->
+        <service id="app.console.command.featurelist" class="Zsotyooo\JiraGitReleaseTool\Console\Command\FeatureListCommand">
+            <argument type="service" id="app.config.config" />
+            <argument type="service" id="app.console.view.featurelist" />
+            <argument type="service" id="app.feature.list.controller" />
+        </service>
+
+        <service id="app.console.view.featurelist" class="Zsotyooo\JiraGitReleaseTool\Console\View\FeatureListView">
+            <argument type="service" id="app.config.config" />
+        </service>
+
+        <!-- Etc list -->
+        <service id="app.console.command.etcfeaturelist" class="Zsotyooo\JiraGitReleaseTool\Console\Command\EtcFeatureListCommand">
+            <argument type="service" id="app.config.config" />
+            <argument type="service" id="app.console.view.etcfeaturelist" />
+            <argument type="service" id="app.feature.etclist.controller" />
+        </service>
+
+        <service id="app.console.view.etcfeaturelist" class="Zsotyooo\JiraGitReleaseTool\Console\View\EtcFeatureListView">
+            <argument type="service" id="app.config.config" />
+        </service>
+
+    </services>
+
+</container>

@@ -3,7 +3,7 @@
 namespace Zsotyooo\JiraGitReleaseTool\Git;
 
 use Zsotyooo\JiraGitReleaseTool\Config\Config as AppConfig;
-use Zsotyooo\JiraGitReleaseTool\Git\Branch as GitBranch;
+use Zsotyooo\JiraGitReleaseTool\Git\BranchFactory;
 use Zsotyooo\JiraGitReleaseTool\Shell\GitShell;
 
 /**
@@ -16,10 +16,18 @@ abstract class BranchCollectionAbstract
     protected $config;
 
     protected $shell;
+
+    protected $branchFactory;
+
+    protected $location = 'r';
     
-    public function __construct($config)
+    public function __construct(
+        $config,
+        $branchFactory
+    )
     {
         $this->config = $config;
+        $this->branchFactory = $branchFactory;
         $this->shell = new GitShell($config);
     }
 
@@ -30,7 +38,7 @@ abstract class BranchCollectionAbstract
      */
     public function load()
     {
-        $output = $this->shell->exec('git branch -r');
+        $output = $this->shell->exec('git branch -' . $this->location);
         $this->branches = array_map('trim', $output);
         $this->_filter();
 
@@ -58,7 +66,10 @@ abstract class BranchCollectionAbstract
     {
         $branches = [];
         foreach ($items as $branchName) {
-            $branches[] = new GitBranch($branchName, $this->config);
+            $branches[] = $this->branchFactory->createBranch(
+                $branchName,
+                $this->config
+            );
         }
         return $branches;
     }
